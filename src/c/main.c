@@ -5,11 +5,11 @@
 // Initially based on LowPoly by ECandB - big thanks and shout out!! //
 
 static Window *main_window;
-static TextLayer *time_layer, *day_layer, *last_layer, *bt_layer, *date_layer, *step_layer, *percent_layer, *xpercent_layer, *datecolour_layer, *stepcolour_layer, *timecolour_layer;
+static TextLayer *time_layer, *remind_layer, *day_layer, *last_layer, *bt_layer, *date_layer, *step_layer, *percent_layer, *xpercent_layer, *datecolour_layer, *stepcolour_layer, *timecolour_layer;
 // static GBitmap *bg_bitmap, *bt_icon_bitmap, *battery_icon_bitmap;
 //   , *charging_icon_bitmap;
 // static BitmapLayer *bg_bitmap_layer, *bt_icon_layer, *battery_icon_layer;
-static GFont timeFont, dateFont, percentFont;
+static GFont remindFont, timeFont, dateFont, percentFont;
 static Layer *battery_layer;
 static int battery_level; 
 // static bool battery_plugged;
@@ -23,6 +23,7 @@ typedef enum {
 
 // A structure containing our settings
 typedef struct ClaySettings {
+  char Reminder[40];
   int StepGoal;
   bool buzzondisconnect;
   int timecolour;
@@ -37,6 +38,7 @@ ClaySettings settings;
 
 // Initialize the default settings
 static void prv_default_settings() {
+  strcpy(settings.Reminder," ");
   settings.StepGoal = 4000;
   settings.buzzondisconnect = 0;
   settings.timecolour = 0x0000FF;
@@ -197,6 +199,8 @@ static void update_time() {
   text_layer_set_text_color(time_layer, GColorFromHEX(settings.timetextcolour));
   text_layer_set_text_color(date_layer, GColorFromHEX(settings.datetextcolour));
   
+  // Reminder
+  text_layer_set_text(remind_layer, settings.Reminder);
 }
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
@@ -204,7 +208,14 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 }
 
 static void inbox_received_handler(DictionaryIterator *iter, void *context) {
-  
+  Tuple *tpreminder = dict_find(iter, MESSAGE_KEY_reminder);
+  if(tpreminder) {
+    strcpy(settings.Reminder, tpreminder->value->cstring);
+
+  // Save the new settings to persistent storage
+     prv_save_settings();
+  }
+ 
   Tuple *tpstepgoal = dict_find(iter, MESSAGE_KEY_stepgoal);
   if(tpstepgoal) {
     settings.StepGoal = tpstepgoal->value->int32;
@@ -290,6 +301,8 @@ static void main_window_load(Window *window) {
     
   percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_DOTS_30)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_DOTS_40)));
 
+  remindFont = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_SQUARE_20));  
+  
   // Create time TextLayer
   timecolour_layer = PBL_IF_ROUND_ELSE(text_layer_create(GRect(0, 50, 180, 43)), text_layer_create(GRect(0, 0, 0, 0)));
   layer_add_child(window_layer, text_layer_get_layer(timecolour_layer));
@@ -383,9 +396,18 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(bt_layer));
 
   bluetooth_callback(connection_service_peek_pebble_app_connection());
+
+ // Create Reminder TextLayer
+  remind_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 1, 1, 1),GRect(1, -4, 141, 20)));
+  text_layer_set_background_color(remind_layer, GColorClear);
+  text_layer_set_text_color(remind_layer, GColorWhite);
+  text_layer_set_font(remind_layer, remindFont);
+  text_layer_set_text_alignment(remind_layer, GTextAlignmentRight);
+  layer_add_child(window_get_root_layer(window), text_layer_get_layer(remind_layer));
+
   
   // Create xpercent TextLayer
-  last_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 172, 180, 10),GRect(0, 0, 0, 0)));
+  last_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 172, 180, 10),GRect(1, 1, 1, 1)));
   text_layer_set_background_color(last_layer, GColorBlack);
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(last_layer));
   
@@ -405,7 +427,7 @@ static void main_window_load(Window *window) {
 
   // Battery meter
   // battery_layer = layer_create(PBL_IF_ROUND_ELSE(GRect(63, 156, 16, 6),GRect(86, 24, 16, 6)));
-  battery_layer = layer_create(PBL_IF_ROUND_ELSE(GRect(63, 156, 16, 6),GRect(0, 0, 0, 0)));
+  battery_layer = layer_create(PBL_IF_ROUND_ELSE(GRect(63, 156, 16, 6),GRect(1, 1, 1, 1)));
 
   // layer_set_update_proc(battery_layer, battery_update_proc);
   layer_add_child(window_get_root_layer(window), battery_layer);
@@ -436,10 +458,13 @@ static void main_window_unload(Window *window) {
   text_layer_destroy(xpercent_layer);
   text_layer_destroy(bt_layer);
   text_layer_destroy(last_layer);
+  text_layer_destroy(remind_layer);
 
   fonts_unload_custom_font(timeFont);
   fonts_unload_custom_font(dateFont);
   fonts_unload_custom_font(percentFont);
+  fonts_unload_custom_font(remindFont);
+  
   
   // gbitmap_destroy(bg_bitmap);
   // gbitmap_destroy(bt_icon_bitmap);

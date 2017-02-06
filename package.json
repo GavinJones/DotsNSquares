@@ -19,7 +19,8 @@
             "datecolour",
             "timetextcolour",
             "datetextcolour",
-            "facecolour"
+            "facecolour",
+            "reminder"
         ],
         "projectType": "native",
         "resources": {
@@ -39,22 +40,8 @@
                     "type": "font"
                 },
                 {
-                    "characterRegex": "[0-9:%]",
                     "file": "fonts/square.ttf",
-                    "name": "SQUARE_22",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "characterRegex": "[0-9:]",
-                    "file": "fonts/square.ttf",
-                    "name": "SQUARE_56",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/square.ttf",
-                    "name": "SQUARE_29",
+                    "name": "SQUARE_20",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -67,7 +54,21 @@
                 },
                 {
                     "file": "fonts/square.ttf",
-                    "name": "SQUARE_18",
+                    "name": "SQUARE_29",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:]",
+                    "file": "fonts/square.ttf",
+                    "name": "SQUARE_56",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:%]",
+                    "file": "fonts/square.ttf",
+                    "name": "SQUARE_22",
                     "targetPlatforms": null,
                     "type": "font"
                 },

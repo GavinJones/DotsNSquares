@@ -12,7 +12,12 @@ module.exports = [
     {
       "type": "heading",
       "defaultValue": "General"
-    },    
+    },  
+    {
+      "type": "input",
+      "messageKey": "reminder",
+      "label": "Reminder (Pebble 2 only)"
+    },      
     {
      "type": "slider",
      "messageKey": "stepgoal",
