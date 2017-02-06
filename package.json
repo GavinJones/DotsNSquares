@@ -1,0 +1,125 @@
+{
+    "author": "Gavin",
+    "dependencies": {
+        "pebble-clay": "^1.0.0"
+    },
+    "keywords": [],
+    "name": "dotsnsquares",
+    "pebble": {
+        "capabilities": [
+            "configurable",
+            "health"
+        ],
+        "displayName": "Dots and Squares",
+        "enableMultiJS": true,
+        "messageKeys": [
+            "stepgoal",
+            "buzzondisconnect",
+            "timecolour",
+            "datecolour",
+            "timetextcolour",
+            "datetextcolour",
+            "facecolour"
+        ],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "characterRegex": "[0-9:.]",
+                    "file": "fonts/visitor1.ttf",
+                    "name": "VISITOR_54",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:.]",
+                    "file": "fonts/visitor1.ttf",
+                    "name": "VISITOR_56",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:%]",
+                    "file": "fonts/square.ttf",
+                    "name": "SQUARE_22",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:]",
+                    "file": "fonts/square.ttf",
+                    "name": "SQUARE_56",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/square.ttf",
+                    "name": "SQUARE_29",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:]",
+                    "file": "fonts/square.ttf",
+                    "name": "SQUARE_62",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/square.ttf",
+                    "name": "SQUARE_18",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "images/bluetoothicon.png",
+                    "name": "BLUETOOTH",
+                    "targetPlatforms": null,
+                    "type": "png"
+                },
+                {
+                    "file": "images/battery.png",
+                    "name": "BATTERY",
+                    "type": "png"
+                },
+                {
+                    "file": "images/charging.png",
+                    "name": "CHARGING",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk"
+                    ],
+                    "type": "png"
+                },
+                {
+                    "file": "fonts/dots.ttf",
+                    "name": "DOTS_25",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/dots.ttf",
+                    "name": "DOTS_30",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/dots.ttf",
+                    "name": "DOTS_40",
+                    "targetPlatforms": null,
+                    "type": "font"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "chalk",
+            "diorite"
+        ],
+        "uuid": "df5c1c61-7e67-474d-8b20-a2d9185992d6",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.0.0"
+}
