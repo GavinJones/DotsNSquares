@@ -5,7 +5,7 @@
 // Initially based on LowPoly by ECandB - big thanks and shout out!! //
 
 static Window *main_window;
-static TextLayer *time_layer, *remind_layer, *day_layer, *last_layer, *bt_layer, *date_layer, *step_layer, *percent_layer, *xpercent_layer, *datecolour_layer, *stepcolour_layer, *timecolour_layer;
+static TextLayer *time_layer, *remind_layer, *day_layer, *last_layer, *bt_layer, *date_layer, *step_layer, *goal_layer, *percent_layer, *xpercent_layer, *datecolour_layer, *stepcolour_layer, *timecolour_layer;
 // static GBitmap *bg_bitmap, *bt_icon_bitmap, *battery_icon_bitmap;
 //   , *charging_icon_bitmap;
 // static BitmapLayer *bg_bitmap_layer, *bt_icon_layer, *battery_icon_layer;
@@ -77,13 +77,16 @@ static void health_handler(HealthEventType event, void *context) {
     if (settings.StepGoal > 0) {
        if(step_count > settings.StepGoal) {
           text_layer_set_background_color(stepcolour_layer, GColorGreen);
+          text_layer_set_text(goal_layer, "+");
           } 
        else if(step_count < 2000) {
           text_layer_set_background_color(stepcolour_layer, GColorRed);
+          text_layer_set_text(goal_layer, " ");
           } 
        else {
           text_layer_set_background_color(stepcolour_layer, GColorBlack);
-            }
+          text_layer_set_text(goal_layer, " ");
+          }
         }
     }
 }
@@ -347,7 +350,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(stepcolour_layer, GColorClear);
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(stepcolour_layer));
   
-  step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 6, 180, 42),GRect(1, 125, 144, 40)));
+  step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 6, 180, 42),GRect(20, 125, 124, 40)));
   text_layer_set_background_color(step_layer, GColorClear);
   text_layer_set_text_color(step_layer, GColorWhite);
   text_layer_set_font(step_layer, dateFont);
@@ -357,6 +360,13 @@ static void main_window_load(Window *window) {
 
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(step_layer));
 
+  goal_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(0, 0, 0, 0),GRect(2, 126, 20, 40)));
+  text_layer_set_background_color(goal_layer, GColorClear);
+  text_layer_set_text_color(goal_layer, GColorWhite);
+  text_layer_set_font(goal_layer, dateFont);
+  text_layer_set_text_alignment(goal_layer, GTextAlignmentLeft);
+  layer_add_child(window_get_root_layer(window), text_layer_get_layer(goal_layer));
+  
   // Create xpercent TextLayer
   xpercent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 148, 180, 23),GRect(0, 0, 0, 0)));
   text_layer_set_background_color(xpercent_layer, GColorClear);
@@ -459,6 +469,7 @@ static void main_window_unload(Window *window) {
   text_layer_destroy(bt_layer);
   text_layer_destroy(last_layer);
   text_layer_destroy(remind_layer);
+  text_layer_destroy(goal_layer);
 
   fonts_unload_custom_font(timeFont);
   fonts_unload_custom_font(dateFont);
