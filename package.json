@@ -31,13 +31,7 @@
             "media": [
                 {
                     "file": "fonts/visitor-tt1.ttf",
-                    "name": "VISITORX_44",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/visitor-tt1.ttf",
-                    "name": "VISITORX_30",
+                    "name": "VISITORX_40",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -49,26 +43,13 @@
                 },
                 {
                     "file": "fonts/visitor-tt1.ttf",
-                    "name": "VISITORX_40",
+                    "name": "VISITORX_30",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
-                    "file": "fonts/bitdust.ttf",
-                    "name": "BITDUST_25",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/visitor1.ttf",
-                    "name": "VISITOR_32",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "characterRegex": "[0-9:.]",
-                    "file": "fonts/visitor1.ttf",
-                    "name": "VISITOR_54",
+                    "file": "fonts/visitor-tt1.ttf",
+                    "name": "VISITORX_44",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -80,8 +61,9 @@
                     "type": "font"
                 },
                 {
+                    "characterRegex": "[0-9:.]",
                     "file": "fonts/visitor1.ttf",
-                    "name": "VISITOR_40",
+                    "name": "VISITOR_54",
                     "targetPlatforms": null,
                     "type": "font"
                 },

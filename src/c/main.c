@@ -42,7 +42,7 @@ static void prv_default_settings() {
   settings.StepGoal = 4000;
   settings.buzzondisconnect = 0;
   settings.lowstepwarn = 1;
-  settings.dotfont = 1;
+  settings.dotfont = 0;
   settings.timecolour = 0x0000FF;
   settings.daycolour = 0x0055FF;
   settings.datecolour = 0x0055FF;
@@ -159,8 +159,14 @@ static void update_time() {
   
   
   static char day_buffer[32];
+  char *sys_locale = setlocale(LC_ALL, "");
 
-  strftime(day_buffer, sizeof(day_buffer), "%A", tick_time);
+// Set the TextLayer's contents depending on locale
+  if (strcmp("en_US", sys_locale) == 0) {
+     strftime(day_buffer, sizeof(day_buffer), "%A", tick_time);
+  } else {    
+     strftime(day_buffer, sizeof(day_buffer), "%a.", tick_time);
+  };
   
   if (strcmp(day_buffer, "Monday") == 0) 
   {
