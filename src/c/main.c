@@ -42,7 +42,7 @@ static void prv_default_settings() {
   settings.StepGoal = 4000;
   settings.buzzondisconnect = 0;
   settings.lowstepwarn = 1;
-  settings.dotfont = 0;
+  settings.dotfont = 1;
   settings.timecolour = 0x0000FF;
   settings.daycolour = 0x0055FF;
   settings.datecolour = 0x0055FF;
@@ -395,7 +395,7 @@ static void main_window_load(Window *window) {
   if(settings.dotfont) { 
      date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 78, 180, 40),GRect(1, 66, 144, 50)));
   } else { 
-    date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 72, 180, 50),GRect(1, 60, 144, 50)));
+    date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 73, 180, 50),GRect(1, 60, 144, 50)));
   }  
 
   text_layer_set_background_color(date_layer, GColorClear);

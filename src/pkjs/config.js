@@ -31,12 +31,14 @@ module.exports = [
    {
      "type": "toggle",
      "messageKey": "lowstepwarn",
-         "label": "Highlight low steps"
+         "label": "Highlight low steps",
+         "defaultValue": true
    },   
    {
      "type": "toggle",
      "messageKey": "dotfont",
-         "label": "Dotted fonts"
+         "label": "Dotted fonts",
+         "defaultValue": true
    },         
    {
      "type": "color",
