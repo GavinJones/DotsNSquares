@@ -30,6 +30,24 @@ module.exports = [
    },
    {
      "type": "toggle",
+     "messageKey": "lowstepwarn",
+         "label": "Highlight low steps"
+   },   
+   {
+     "type": "toggle",
+     "messageKey": "dotfont",
+         "label": "Dotted fonts"
+   },         
+   {
+     "type": "color",
+     "messageKey": "stepcolour",
+     "defaultValue": "0000ff",
+     "label": "Step Background Colour",
+     "sunlight": false,
+     "allowGray": true
+   },      
+   {
+     "type": "toggle",
      "messageKey": "buzzondisconnect",
          "label": "Buzz on disconnect"
    },
@@ -75,12 +93,20 @@ module.exports = [
     },  
    {
      "type": "color",
-     "messageKey": "datecolour",
+     "messageKey": "daycolour",
      "defaultValue": "0055ff",
-     "label": "Background Colour",
+     "label": "Day Background Colour",
      "sunlight": false,
      "allowGray": true
    },
+   {
+     "type": "color",
+     "messageKey": "datecolour",
+     "defaultValue": "0055ff",
+     "label": "Date Background Colour",
+     "sunlight": false,
+     "allowGray": true
+   },    
    {
      "type": "color",
      "messageKey": "datetextcolour",

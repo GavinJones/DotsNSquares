@@ -20,11 +20,51 @@
             "timetextcolour",
             "datetextcolour",
             "facecolour",
-            "reminder"
+            "reminder",
+            "lowstepwarn",
+            "daycolour",
+            "stepcolour",
+            "dotfont"
         ],
         "projectType": "native",
         "resources": {
             "media": [
+                {
+                    "file": "fonts/visitor-tt1.ttf",
+                    "name": "VISITORX_44",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/visitor-tt1.ttf",
+                    "name": "VISITORX_30",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/visitor-tt1.ttf",
+                    "name": "VISITORX_38",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/visitor-tt1.ttf",
+                    "name": "VISITORX_40",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/bitdust.ttf",
+                    "name": "BITDUST_25",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/visitor1.ttf",
+                    "name": "VISITOR_32",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
                 {
                     "characterRegex": "[0-9:.]",
                     "file": "fonts/visitor1.ttf",
@@ -40,73 +80,38 @@
                     "type": "font"
                 },
                 {
+                    "file": "fonts/visitor1.ttf",
+                    "name": "VISITOR_40",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/square.ttf",
+                    "name": "SQUARE_32",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
                     "file": "fonts/square.ttf",
                     "name": "SQUARE_20",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
-                    "characterRegex": "[0-9:]",
                     "file": "fonts/square.ttf",
-                    "name": "SQUARE_62",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/square.ttf",
-                    "name": "SQUARE_29",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "characterRegex": "[0-9:]",
-                    "file": "fonts/square.ttf",
-                    "name": "SQUARE_56",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "characterRegex": "[0-9:%]",
-                    "file": "fonts/square.ttf",
-                    "name": "SQUARE_22",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "images/bluetoothicon.png",
-                    "name": "BLUETOOTH",
-                    "targetPlatforms": null,
-                    "type": "png"
-                },
-                {
-                    "file": "images/battery.png",
-                    "name": "BATTERY",
-                    "type": "png"
-                },
-                {
-                    "file": "images/charging.png",
-                    "name": "CHARGING",
-                    "targetPlatforms": [
-                        "basalt",
-                        "chalk"
-                    ],
-                    "type": "png"
-                },
-                {
-                    "file": "fonts/dots.ttf",
-                    "name": "DOTS_25",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/dots.ttf",
-                    "name": "DOTS_30",
+                    "name": "SQUARE_36",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
                     "file": "fonts/dots.ttf",
                     "name": "DOTS_40",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/dots.ttf",
+                    "name": "DOTS_30",
                     "targetPlatforms": null,
                     "type": "font"
                 }
