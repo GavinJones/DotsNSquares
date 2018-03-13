@@ -30,9 +30,20 @@
         "resources": {
             "media": [
                 {
-                    "characterRegex": "[0-9:]",
                     "file": "fonts/Pixel Full.ttf",
-                    "name": "FULL_40",
+                    "name": "FULL_18",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/Pixel Full.ttf",
+                    "name": "FULL_31",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/Pixel Full.ttf",
+                    "name": "FULL_23",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -44,20 +55,9 @@
                     "type": "font"
                 },
                 {
+                    "characterRegex": "[0-9:]",
                     "file": "fonts/Pixel Full.ttf",
-                    "name": "FULL_23",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/Pixel Full.ttf",
-                    "name": "FULL_31",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/Pixel Dot.ttf",
-                    "name": "PIXEL_23",
+                    "name": "FULL_40",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -68,8 +68,8 @@
                     "type": "font"
                 },
                 {
-                    "file": "fonts/square.ttf",
-                    "name": "SQUARE_20",
+                    "file": "fonts/Pixel Dot.ttf",
+                    "name": "PIXEL_23",
                     "targetPlatforms": null,
                     "type": "font"
                 }

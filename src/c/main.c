@@ -356,8 +356,9 @@ static void main_window_load(Window *window) {
       percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_23)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
   }
   
-  remindFont = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_SQUARE_20));  
-  
+   
+  remindFont = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_18));  
+    
   // Create time TextLayer
   timecolour_layer = PBL_IF_ROUND_ELSE(text_layer_create(GRect(0, 50, 180, 43)), text_layer_create(GRect(0, 0, 0, 0)));
   layer_add_child(window_layer, text_layer_get_layer(timecolour_layer));
@@ -428,10 +429,10 @@ static void main_window_load(Window *window) {
 
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(step_layer));
 
-  goal_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(0, 0, 0, 0),GRect(2, 134, 20, 40)));
+  goal_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(0, 0, 0, 0),GRect(2, 134, 30, 50)));
   text_layer_set_background_color(goal_layer, GColorClear);
   text_layer_set_text_color(goal_layer, GColorWhite);
-  text_layer_set_font(goal_layer, dayFont);
+  text_layer_set_font(goal_layer, stepFont);
   text_layer_set_text_alignment(goal_layer, GTextAlignmentLeft);
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(goal_layer));
   
