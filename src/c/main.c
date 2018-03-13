@@ -332,7 +332,7 @@ static void main_window_load(Window *window) {
   window_set_background_color(window, GColorBlack);
   // Load custom fonts
     
-  timeFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITOR_56)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITOR_54)));
+  timeFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_44)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_40)));
  
   if(settings.dotfont) {  
      dateFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
@@ -362,7 +362,7 @@ static void main_window_load(Window *window) {
   timecolour_layer = PBL_IF_ROUND_ELSE(text_layer_create(GRect(0, 50, 180, 43)), text_layer_create(GRect(0, 0, 0, 0)));
   layer_add_child(window_layer, text_layer_get_layer(timecolour_layer));
   
-  time_layer = PBL_IF_ROUND_ELSE(text_layer_create(GRect(0, 30, 180, 70)), text_layer_create(GRect(1, 24, 146, 70)));
+  time_layer = PBL_IF_ROUND_ELSE(text_layer_create(GRect(0, 42, 180, 70)), text_layer_create(GRect(1, 38, 146, 70)));
   text_layer_set_background_color(time_layer, GColorClear);
     
   text_layer_set_text_color(time_layer, GColorWhite);
@@ -444,7 +444,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(xpercent_layer));
 
 // Create percent TextLayer
-  percent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 145, 180, 33),GRect(1, 10, 144, 40)));
+  percent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 145, 180, 33),GRect(1, 12, 144, 40)));
   text_layer_set_background_color(percent_layer, GColorClear);
   text_layer_set_text_color(percent_layer, GColorWhite);
   text_layer_set_font(percent_layer, percentFont);
