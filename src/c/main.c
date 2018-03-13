@@ -6,7 +6,7 @@
 
 static Window *main_window;
 static TextLayer *time_layer, *remind_layer, *day_layer, *last_layer, *bt_layer, *btcolour_layer, *date_layer, *step_layer, *goal_layer, *percent_layer, *xpercent_layer, *datecolour_layer, *daycolour_layer, *stepcolour_layer, *timecolour_layer;
-static GFont remindFont, timeFont, dateFont, dayFont, percentFont;
+static GFont remindFont, timeFont, dateFont, stepFont, dayFont, percentFont;
 static Layer *battery_layer;
 static int battery_level; 
 
@@ -170,15 +170,15 @@ static void update_time() {
   
   if (strcmp(day_buffer, "Monday") == 0) 
   {
-    strcpy(day_buffer, "mondaY");
+    strcpy(day_buffer, "mon."); 
   };
   if (strcmp(day_buffer, "Tuesday") == 0) 
   {
-    strcpy(day_buffer, "Tues.");
+    strcpy(day_buffer, "Tues."); 
   };
   if (strcmp(day_buffer, "Wednesday") == 0) 
   {
-    strcpy(day_buffer, "weds.");
+    strcpy(day_buffer, "weds."); 
   };
   if (strcmp(day_buffer, "Thursday") == 0) 
   {
@@ -186,15 +186,15 @@ static void update_time() {
   };
   if (strcmp(day_buffer, "Friday") == 0) 
   {
-    strcpy(day_buffer, "FridaY");
+    strcpy(day_buffer, "Fri."); 
   };
   if (strcmp(day_buffer, "Saturday") == 0) 
   {
-    strcpy(day_buffer, "Sat.");
+    strcpy(day_buffer, "Sat."); 
   };
   if (strcmp(day_buffer, "Sunday") == 0) 
   {
-    strcpy(day_buffer, "SundaY");
+    strcpy(day_buffer, "Sun."); 
   };
   // upcase(date_buffer);
   text_layer_set_text(day_layer, day_buffer);
@@ -335,22 +335,27 @@ static void main_window_load(Window *window) {
   timeFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITOR_56)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITOR_54)));
  
   if(settings.dotfont) {  
-     dateFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_DOTS_40)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_DOTS_40)));
+     dateFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
   } else {
-     dateFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITORX_44)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITORX_44)));
-  }
-
-  if(settings.dotfont) {  
-    dayFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_DOTS_40)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_DOTS_40)));
-  } else {  
-    dayFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITORX_44)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITORX_44)));
+     dateFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
   }
   
   if(settings.dotfont) {  
-    percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_DOTS_30)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_DOTS_40)));
+    dayFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
   } else {  
-      percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITORX_30)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_VISITORX_40)));
+    dayFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
   }
+  if(settings.dotfont) {  
+    stepFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
+  } else {  
+    stepFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
+  }  
+  if(settings.dotfont) {  
+    percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_23)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
+  } else {  
+      percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_23)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
+  }
+  
   remindFont = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_SQUARE_20));  
   
   // Create time TextLayer
@@ -373,9 +378,9 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(daycolour_layer));
   
   if(settings.dotfont) {  
-    day_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 107, 180, 40),GRect(1, 96, 144, 40)));
+    day_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 116, 180, 40),GRect(1, 105, 144, 40)));
   } else {  
-    day_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 102, 180, 45),GRect(1, 86, 144, 50)));
+    day_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 116, 180, 45),GRect(1, 105, 144, 50)));
   }
 
   text_layer_set_background_color(day_layer, GColorClear);
@@ -393,9 +398,9 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(datecolour_layer));
   
   if(settings.dotfont) { 
-     date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 78, 180, 40),GRect(1, 66, 144, 50)));
+     date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 87, 180, 40),GRect(1, 76, 144, 50)));
   } else { 
-    date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 73, 180, 50),GRect(1, 60, 144, 50)));
+    date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 87, 180, 50),GRect(1, 76, 144, 50)));
   }  
 
   text_layer_set_background_color(date_layer, GColorClear);
@@ -411,19 +416,19 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(stepcolour_layer));
   
   if(settings.dotfont) { 
-    step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 6, 180, 45),GRect(20, 125, 124, 40)));
+    step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 14, 180, 45),GRect(20, 134, 124, 40)));
   } else {
-     step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 1, 180, 45),GRect(20, 111, 124, 50)));
+     step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 14, 180, 45),GRect(20, 134, 124, 50)));
   }
   text_layer_set_background_color(step_layer, GColorClear);
   text_layer_set_text_color(step_layer, GColorWhite);
-  text_layer_set_font(step_layer, dayFont);
+  text_layer_set_font(step_layer, stepFont);
   
   PBL_IF_ROUND_ELSE(text_layer_set_text_alignment(step_layer, GTextAlignmentCenter),text_layer_set_text_alignment(step_layer, GTextAlignmentRight));
 
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(step_layer));
 
-  goal_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(0, 0, 0, 0),GRect(2, 126, 20, 40)));
+  goal_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(0, 0, 0, 0),GRect(2, 134, 20, 40)));
   text_layer_set_background_color(goal_layer, GColorClear);
   text_layer_set_text_color(goal_layer, GColorWhite);
   text_layer_set_font(goal_layer, dayFont);
@@ -439,7 +444,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(xpercent_layer));
 
 // Create percent TextLayer
-  percent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 139, 180, 33),GRect(1, 2, 144, 40)));
+  percent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 145, 180, 33),GRect(1, 10, 144, 40)));
   text_layer_set_background_color(percent_layer, GColorClear);
   text_layer_set_text_color(percent_layer, GColorWhite);
   text_layer_set_font(percent_layer, percentFont);
@@ -453,7 +458,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(btcolour_layer, GColorBlack);
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(btcolour_layer));
 
-  bt_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, -10, 180, 30),GRect(1, 1, 80, 40)));
+  bt_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, -3, 180, 30),GRect(1, 10, 80, 40)));
   text_layer_set_background_color(bt_layer, GColorClear);
   text_layer_set_text_color(bt_layer, GColorWhite);
   text_layer_set_font(bt_layer, percentFont);

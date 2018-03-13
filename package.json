@@ -30,26 +30,26 @@
         "resources": {
             "media": [
                 {
-                    "file": "fonts/visitor-tt1.ttf",
-                    "name": "VISITORX_40",
+                    "file": "fonts/Pixel Full.ttf",
+                    "name": "FULL_23",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
-                    "file": "fonts/visitor-tt1.ttf",
-                    "name": "VISITORX_38",
+                    "file": "fonts/Pixel Full.ttf",
+                    "name": "FULL_31",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
-                    "file": "fonts/visitor-tt1.ttf",
-                    "name": "VISITORX_30",
+                    "file": "fonts/Pixel Dot.ttf",
+                    "name": "PIXEL_23",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
-                    "file": "fonts/visitor-tt1.ttf",
-                    "name": "VISITORX_44",
+                    "file": "fonts/Pixel Dot.ttf",
+                    "name": "PIXEL_31",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -82,18 +82,6 @@
                 {
                     "file": "fonts/square.ttf",
                     "name": "SQUARE_36",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/dots.ttf",
-                    "name": "DOTS_40",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/dots.ttf",
-                    "name": "DOTS_30",
                     "targetPlatforms": null,
                     "type": "font"
                 }
