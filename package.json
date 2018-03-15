@@ -30,6 +30,18 @@
         "resources": {
             "media": [
                 {
+                    "file": "fonts/Pixel Thin.ttf",
+                    "name": "THIN_23",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/Pixel Thin.ttf",
+                    "name": "THIN_31",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
                     "file": "fonts/Pixel Full.ttf",
                     "name": "FULL_18",
                     "targetPlatforms": null,

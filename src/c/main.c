@@ -337,23 +337,23 @@ static void main_window_load(Window *window) {
   if(settings.dotfont) {  
      dateFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
   } else {
-     dateFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
+     dateFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_THIN_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_THIN_31)));
   }
   
   if(settings.dotfont) {  
     dayFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
   } else {  
-    dayFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
+    dayFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_THIN_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_THIN_31)));
   }
   if(settings.dotfont) {  
     stepFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
   } else {  
-    stepFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
+    stepFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_THIN_31)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_THIN_31)));
   }  
   if(settings.dotfont) {  
     percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_23)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_PIXEL_31)));
   } else {  
-      percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_23)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_31)));
+      percentFont = PBL_IF_ROUND_ELSE(fonts_load_custom_font(resource_get_handle(RESOURCE_ID_THIN_23)),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_THIN_31)));
   }
   
    
