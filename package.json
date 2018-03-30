@@ -31,38 +31,13 @@
             "media": [
                 {
                     "file": "fonts/Pixel Thin.ttf",
-                    "name": "THIN_23",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/Pixel Thin.ttf",
                     "name": "THIN_31",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
-                    "file": "fonts/Pixel Full.ttf",
-                    "name": "FULL_18",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/Pixel Full.ttf",
-                    "name": "FULL_31",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "file": "fonts/Pixel Full.ttf",
-                    "name": "FULL_23",
-                    "targetPlatforms": null,
-                    "type": "font"
-                },
-                {
-                    "characterRegex": "[0-9:]",
-                    "file": "fonts/Pixel Full.ttf",
-                    "name": "FULL_44",
+                    "file": "fonts/Pixel Thin.ttf",
+                    "name": "THIN_23",
                     "targetPlatforms": null,
                     "type": "font"
                 },
@@ -74,14 +49,27 @@
                     "type": "font"
                 },
                 {
-                    "file": "fonts/Pixel Dot.ttf",
-                    "name": "PIXEL_31",
+                    "characterRegex": "[0-9:]",
+                    "file": "fonts/Pixel Full.ttf",
+                    "name": "FULL_44",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/Pixel Full.ttf",
+                    "name": "FULL_18",
                     "targetPlatforms": null,
                     "type": "font"
                 },
                 {
                     "file": "fonts/Pixel Dot.ttf",
                     "name": "PIXEL_23",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "fonts/Pixel Dot.ttf",
+                    "name": "PIXEL_31",
                     "targetPlatforms": null,
                     "type": "font"
                 }

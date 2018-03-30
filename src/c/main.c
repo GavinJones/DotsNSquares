@@ -81,7 +81,7 @@ static void health_handler(HealthEventType event, void *context) {
     if (settings.StepGoal > 0) {
        if(step_count > settings.StepGoal) {
           text_layer_set_background_color(stepcolour_layer, GColorGreen);
-          text_layer_set_text(goal_layer, "+");
+          text_layer_set_text(goal_layer, "$");
           } 
        else if(step_count < 2000) {
           if(settings.lowstepwarn) {
@@ -459,7 +459,7 @@ static void main_window_load(Window *window) {
   text_layer_set_background_color(btcolour_layer, GColorBlack);
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(btcolour_layer));
 
-  bt_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, -3, 180, 30),GRect(1, 10, 80, 40)));
+  bt_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, -3, 180, 30),GRect(1, 12, 80, 40)));
   text_layer_set_background_color(bt_layer, GColorClear);
   text_layer_set_text_color(bt_layer, GColorWhite);
   text_layer_set_font(bt_layer, percentFont);
