@@ -412,7 +412,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(date_layer));
   
   // Create step TextLayer
-  stepcolour_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 23, 180, 26),GRect(0, 0, 0, 0)));
+  stepcolour_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 22, 180, 27),GRect(0, 0, 0, 0)));
   text_layer_set_background_color(stepcolour_layer, GColorClear);
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(stepcolour_layer));
   
@@ -437,7 +437,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(goal_layer));
   
   // Create xpercent TextLayer
-  xpercent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 151, 180, 23),GRect(0, 0, 0, 0)));
+  xpercent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 154, 180, 23),GRect(0, 0, 0, 0)));
   text_layer_set_background_color(xpercent_layer, GColorClear);
   text_layer_set_text_color(xpercent_layer, GColorWhite);
   text_layer_set_font(xpercent_layer, percentFont);
@@ -445,7 +445,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(xpercent_layer));
 
 // Create percent TextLayer
-  percent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 145, 180, 33),GRect(1, 12, 144, 40)));
+  percent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 147, 180, 33),GRect(1, 12, 144, 40)));
   text_layer_set_background_color(percent_layer, GColorClear);
   text_layer_set_text_color(percent_layer, GColorWhite);
   text_layer_set_font(percent_layer, percentFont);
