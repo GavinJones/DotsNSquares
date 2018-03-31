@@ -360,7 +360,7 @@ static void main_window_load(Window *window) {
   remindFont = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FULL_18));  
     
   // Create time TextLayer
-  timecolour_layer = PBL_IF_ROUND_ELSE(text_layer_create(GRect(0, 50, 180, 43)), text_layer_create(GRect(0, 0, 0, 0)));
+  timecolour_layer = PBL_IF_COLOR_ELSE(PBL_IF_ROUND_ELSE(text_layer_create(GRect(0, 50, 180, 43)),text_layer_create(GRect(0, 48, 180, 36))),( text_layer_create(GRect(0, 0, 0, 0))));
   layer_add_child(window_layer, text_layer_get_layer(timecolour_layer));
   
   time_layer = PBL_IF_ROUND_ELSE(text_layer_create(GRect(0, 42, 180, 70)), text_layer_create(GRect(1, 38, 146, 70)));
@@ -374,7 +374,7 @@ static void main_window_load(Window *window) {
 
   // Create day TextLayer
   // daycolour_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(0, 94, 180, 29),GRect(0, 0, 0, 0)));
-  daycolour_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 124, 180, 27),GRect(0, 0, 0, 0)));
+  daycolour_layer = text_layer_create(PBL_IF_COLOR_ELSE(PBL_IF_ROUND_ELSE(GRect(0, 124, 180, 27),GRect(0, 114, 180, 26)),GRect(0, 0, 0, 0)));
 
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(daycolour_layer));
   
@@ -394,14 +394,14 @@ static void main_window_load(Window *window) {
 
   // Create date TextLayer
   // datecolour_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 124, 180, 27),GRect(0, 0, 0, 0)));
-  datecolour_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(0, 94, 180, 29),GRect(0, 0, 0, 0)));
+  datecolour_layer = text_layer_create(PBL_IF_COLOR_ELSE(PBL_IF_ROUND_ELSE(GRect(0, 94, 180, 29),GRect(0, 85, 180, 28)),GRect(0, 0, 0, 0)));
 
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(datecolour_layer));
   
   if(settings.dotfont) { 
-     date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 87, 180, 40),GRect(1, 76, 144, 50)));
+     date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 87, 180, 40),GRect(1, 77, 144, 50)));
   } else { 
-    date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 87, 180, 50),GRect(1, 76, 144, 50)));
+    date_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 87, 180, 50),GRect(1, 77, 144, 50)));
   }  
 
   text_layer_set_background_color(date_layer, GColorClear);
@@ -412,14 +412,14 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(date_layer));
   
   // Create step TextLayer
-  stepcolour_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 22, 180, 27),GRect(0, 0, 0, 0)));
+  stepcolour_layer = text_layer_create(PBL_IF_COLOR_ELSE(PBL_IF_ROUND_ELSE(GRect(1, 22, 180, 27),GRect(0, 141, 180, 27)),GRect(0, 0, 0, 0)));
   text_layer_set_background_color(stepcolour_layer, GColorClear);
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(stepcolour_layer));
   
   if(settings.dotfont) { 
-    step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 14, 180, 45),GRect(20, 134, 124, 40)));
+    step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 14, 180, 45),GRect(21, 133, 124, 40)));
   } else {
-     step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 14, 180, 45),GRect(20, 134, 124, 50)));
+     step_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 14, 180, 45),GRect(21, 133, 124, 50)));
   }
   text_layer_set_background_color(step_layer, GColorClear);
   text_layer_set_text_color(step_layer, GColorWhite);
@@ -437,7 +437,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(goal_layer));
   
   // Create xpercent TextLayer
-  xpercent_layer = text_layer_create(PBL_IF_ROUND_ELSE(GRect(1, 154, 180, 23),GRect(0, 0, 0, 0)));
+  xpercent_layer = text_layer_create(PBL_IF_COLOR_ELSE(PBL_IF_ROUND_ELSE(GRect(1, 154, 180, 23),GRect(0, 21, 180, 26)),GRect(0, 0, 0, 0)));
   text_layer_set_background_color(xpercent_layer, GColorClear);
   text_layer_set_text_color(xpercent_layer, GColorWhite);
   text_layer_set_font(xpercent_layer, percentFont);
