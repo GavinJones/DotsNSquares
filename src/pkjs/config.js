@@ -16,7 +16,7 @@ module.exports = [
     {
       "type": "input",
       "messageKey": "reminder",
-      "label": "Reminder (Pebble 2 only)"
+      "label": "Reminder (not Pebble round)"
     },      
     {
      "type": "slider",
@@ -39,7 +39,13 @@ module.exports = [
      "messageKey": "dotfont",
          "label": "Dotted fonts",
          "defaultValue": true
-   },         
+   }, 
+   {
+     "type": "toggle",
+     "messageKey": "backchange",
+         "label": "Highlight background",
+         "defaultValue": true
+   },    
    {
      "type": "color",
      "messageKey": "stepcolour",

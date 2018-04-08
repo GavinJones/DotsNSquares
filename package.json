@@ -24,7 +24,8 @@
             "lowstepwarn",
             "daycolour",
             "stepcolour",
-            "dotfont"
+            "dotfont",
+            "backchange"
         ],
         "projectType": "native",
         "resources": {

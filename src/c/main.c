@@ -31,6 +31,8 @@ typedef struct ClaySettings {
   int datetextcolour;
   int facecolour;
   int stepcolour;
+  bool backchange;
+  
 } __attribute__((__packed__)) ClaySettings;
 
 // A struct for our specific settings (see main.h)
@@ -50,7 +52,7 @@ static void prv_default_settings() {
   settings.datetextcolour = 0xFFFFFF;
   settings.facecolour = 0x000000;
   settings.stepcolour = 0x0000FF;
-  
+  settings.backchange = 1;
 }
 
 // Read settings from persistent storage
@@ -77,25 +79,36 @@ static void health_handler(HealthEventType event, void *context) {
     text_layer_set_text(step_layer, s_value_buffer);
     
     int step_count = atoi(s_value_buffer);
-        
+
+    text_layer_set_background_color(stepcolour_layer, GColorFromHEX(settings.stepcolour));
+    text_layer_set_text(goal_layer, " ");
+
     if (settings.StepGoal > 0) {
        if(step_count > settings.StepGoal) {
-          text_layer_set_background_color(stepcolour_layer, GColorGreen);
+          if(settings.backchange) {
+             text_layer_set_background_color(stepcolour_layer, GColorGreen);
+             } else {
+             PBL_IF_COLOR_ELSE(text_layer_set_text_color(step_layer, GColorGreen),text_layer_set_text_color(step_layer, GColorWhite));
+             } 
           text_layer_set_text(goal_layer, "$");
           } 
        else if(step_count < 2000) {
           if(settings.lowstepwarn) {
-             text_layer_set_background_color(stepcolour_layer, GColorRed);
+            if(settings.backchange) {
+               text_layer_set_background_color(stepcolour_layer, GColorRed);
+            } else {
+             PBL_IF_COLOR_ELSE(text_layer_set_text_color(step_layer, GColorRed),text_layer_set_text_color(step_layer, GColorWhite));
+            }               
           } else {
-             text_layer_set_background_color(stepcolour_layer, GColorFromHEX(settings.stepcolour));
+            if(settings.backchange) {
+               text_layer_set_background_color(stepcolour_layer, GColorFromHEX(settings.stepcolour));
+            } else {
+               text_layer_set_text_color(step_layer, GColorWhite);
+            }             
           }
           text_layer_set_text(goal_layer, " ");
           } 
-       else {
-          text_layer_set_background_color(stepcolour_layer, GColorFromHEX(settings.stepcolour));
-          text_layer_set_text(goal_layer, " ");
-          }
-        }
+       }
     }
 }
 
@@ -107,13 +120,24 @@ static void battery_callback(BatteryChargeState state) {
   snprintf(s_percent_buffer, sizeof(s_percent_buffer), "%d%%", (int)battery_level);
     
   text_layer_set_text(percent_layer, s_percent_buffer);
-  
+
+  text_layer_set_text_color(percent_layer, GColorWhite);
+  text_layer_set_background_color(xpercent_layer, GColorBlack);
+
   if(battery_level > 20 ) {
+    if(settings.backchange) {
        text_layer_set_background_color(xpercent_layer, GColorBlack);
+    } else {
+       text_layer_set_text_color(percent_layer, GColorWhite);
+       } 
     };  
 
     if(battery_level < 21) {
-       text_layer_set_background_color(xpercent_layer, GColorRed);
+      if(settings.backchange) {
+         text_layer_set_background_color(xpercent_layer, GColorRed);
+       } else {
+         PBL_IF_COLOR_ELSE(text_layer_set_text_color(percent_layer, GColorRed),text_layer_set_text_color(percent_layer, GColorWhite));
+       } 
     }; 
   
   layer_mark_dirty(battery_layer);
@@ -125,14 +149,24 @@ static void bluetooth_callback(bool connected) {
   if(connected) 
   {
      text_layer_set_text(bt_layer, "");
-     text_layer_set_background_color(btcolour_layer, GColorBlack);
+     if(settings.backchange) {
+        text_layer_set_background_color(btcolour_layer, GColorBlack);
+     } else {
+       text_layer_set_text_color(bt_layer, GColorWhite);
+     } 
+
   };    
   
   if(!connected) 
   {
      text_layer_set_text(bt_layer, "bt!");
-     text_layer_set_background_color(btcolour_layer, GColorRed);
-     if (settings.buzzondisconnect) {
+     if(settings.backchange) {
+        text_layer_set_background_color(btcolour_layer, GColorRed);
+     } else {
+       text_layer_set_text_color(bt_layer, GColorRed);
+     } 
+       
+       if (settings.buzzondisconnect) {
         if (!quiet_time_is_active()) {
            vibes_double_pulse();
         }
@@ -316,6 +350,13 @@ static void inbox_received_handler(DictionaryIterator *iter, void *context) {
   prv_save_settings();
   }
 
+  Tuple *backchange = dict_find(iter, MESSAGE_KEY_backchange);
+  if(backchange) {
+    settings.backchange = backchange->value->int32;
+
+  // Save the new settings to persistent storage
+  prv_save_settings();
+  }
   
   // Battery meter
 
